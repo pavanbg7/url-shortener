@@ -45,7 +45,7 @@ def home():
         conn.commit()
         conn.close()
 
-        short_url = "http://127.0.0.1:5000/" + short_code
+        short_url = request.host_url + short_code
 
         return render_template("index.html", short_url=short_url)
 
@@ -71,6 +71,6 @@ def redirect_url(code):
     return "URL not found"
 
 # RUN APP
+init_db
 if __name__ == "__main__":
-    init_db()
-    app.run(debug=True)
+    app.run(debug=False)
