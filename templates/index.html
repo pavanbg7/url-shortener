@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LinkSnap | Smart URL Shortener</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background: linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:650px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:24px;
+    padding:45px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+    color:white;
+}
+
+.logo{
+    font-size:38px;
+    font-weight:700;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.tagline{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:35px;
+    font-size:15px;
+}
+
+form{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+input{
+    flex:1;
+    min-width:250px;
+    padding:16px 18px;
+    border:none;
+    outline:none;
+    border-radius:14px;
+    font-size:15px;
+}
+
+button{
+    padding:16px 24px;
+    border:none;
+    border-radius:14px;
+    background:#38bdf8;
+    color:#0f172a;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#7dd3fc;
+    transform:translateY(-2px);
+}
+
+.result{
+    margin-top:28px;
+    background:rgba(255,255,255,0.08);
+    padding:18px;
+    border-radius:16px;
+}
+
+.result p{
+    margin-bottom:10px;
+    color:#cbd5e1;
+}
+
+.link-box{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.link-box input{
+    background:white;
+    color:#111827;
+}
+
+.copy-btn{
+    background:#22c55e;
+    color:white;
+}
+
+.copy-btn:hover{
+    background:#4ade80;
+}
+
+.footer{
+    text-align:center;
+    margin-top:25px;
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+@media(max-width:600px){
+    .container{
+        padding:28px;
+    }
+
+    form{
+        flex-direction:column;
+    }
+
+    button{
+        width:100%;
+    }
+
+    .link-box{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">🔗LinkSnap</div>
+<div class="tagline">Convert long messy URLs into clean short links instantly.</div>
+<form method="POST" autocomplete="off">
+    <input 
+        type="url"
+        name="url"
+        placeholder="Paste your long URL here..."
+        required
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+    >
+
+    <button type="submit">Shorten URL</button>
+</form>
+
+{% if short_url %}
+<div class="result">
+    <p>Your short link is ready:</p>
+
+    <div class="link-box">
+        <input type="text" value="{{ short_url }}" id="shortLink" readonly>
+        <button type="button" class="copy-btn" onclick="copyLink()">Copy</button>
+    </div>
+</div>
+{% endif %}
+
+<div class="footer">
+Fast • Secure • Minimal
+</div>
+
+</div>
+
+<script>
+function copyLink(){
+    let copyText = document.getElementById("shortLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
