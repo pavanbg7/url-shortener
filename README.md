@@ -102,6 +102,11 @@ Response:
 ```
 DELETE /{code}
 ```
+**Root**
+```
+GET /
+Returns a simple message pointing to `/docs` — useful as a quick health check or entry point.
+```
 
 ### Error Handling
 
@@ -136,4 +141,4 @@ url-shortener/
 
 ## Live Demo
 
-[Add your Render deployment link here once redeployed]
+https://url-shortener-7yvj.onrender.com/
