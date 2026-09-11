@@ -102,6 +102,6 @@ def redirect_to_long_url(code: str):
 
 @app.get("/")
 def root():
-    return {"message": "URL Shortener API", "docs": "/docs"}
+    return RedirectResponse(url="/docs")
 
     return RedirectResponse(url=row["long_url"])

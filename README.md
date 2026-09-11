@@ -105,7 +105,7 @@ DELETE /{code}
 **Root**
 ```
 GET /
-Returns a simple message pointing to `/docs` — useful as a quick health check or entry point.
+Redirects to `/docs` instead of showing a message.
 ```
 
 ### Error Handling
