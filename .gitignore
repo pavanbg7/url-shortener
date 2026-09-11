@@ -1,19 +1,7 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-
-# Virtual environment
 venv/
-env/
-.env
-.venv/
-
-# Database — never upload this
+__pycache__/
+.pytest_cache/
+*.pyc
+test_database.db
 database.db
-*.db
-*.sqlite3
-
-# VS Code
-.vscode/
+.env
